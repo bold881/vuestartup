@@ -1,0 +1,164 @@
+<template>
+<el-container>
+  <el-header>
+
+  </el-header>
+
+  <el-container>
+    <el-aside width="300px">
+        <el-tree 
+        :plain="true"
+        class="filter-tree" 
+        :data="data2" 
+        :props="defaultProps" 
+        @item-click="itemClick" 
+        @node-click="handleNodeClick">
+        </el-tree>
+    </el-aside>
+
+    <el-container>
+      <el-header>
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+          <el-form-item label="指标全领域搜索：">
+            <el-input v-model="formInline.u1" placeholder="请输入指标名称"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">搜索</el-button>
+          </el-form-item>
+        </el-form>
+      </el-header>
+
+      <el-main>
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item>当前位置：指标目录</el-breadcrumb-item>
+          <el-breadcrumb-item>营销</el-breadcrumb-item>
+          <el-breadcrumb-item>轿车</el-breadcrumb-item>
+        </el-breadcrumb>
+        <p>                      </p>
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+          <el-form-item label="指标名称：">
+            <el-input v-model="formInline.use2r" placeholder=""></el-input>
+          </el-form-item>
+          <el-form-item label="管家：">
+            <el-input v-model="formInline.user3" placeholder=""></el-input>
+          </el-form-item>
+          <el-form-item label="分析主题：">
+            <el-input v-model="formInline.user4" placeholder=""></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+          </el-form-item>
+        </el-form>
+      </el-main>
+
+
+      <el-footer>
+        <a></a>
+        <el-table :data="tableData" border=true highlight-current-row=true stripe=true style="width: 100%">
+          <el-table-column prop="op" label="操作" width="180">
+          </el-table-column>
+          <el-table-column prop="name" label="指标名称" width="180">
+          </el-table-column>
+          <el-table-column prop="define" label="指标定义">
+          </el-table-column>
+        </el-table>
+
+      </el-footer>
+    </el-container>
+  </el-container>
+</el-container>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        tableData: [{
+            op: 'http://element-cn.eleme.io/#/zh-CN/component/table',
+            name: '售后入会率',
+            define: '当月进站后入会车辆数/当月非会员进站车辆数'
+          }, {
+            op: '这是网址',
+            name: '当季进站后入会车辆数',
+            define: '截至季度次月7日认证的车主对应车辆数'
+          }],
+        data2: [{
+          id: 1,
+          label: '指标目录（726）',
+          children: [{
+            id: 2,
+            label: '制造（47）',
+          },{
+            id: 3,
+            label: '车联网（23）',
+          },{
+            id: 4,
+            label: '采购（89）',
+          },{
+            id: 5,
+            label: '质量（395）',
+          },{
+            id: 6,
+            label: '用户大数据（90）',
+            children:[{
+              id: 7,
+              label: '舆情分析'
+            }]
+          },{
+            id: 8,
+            label: '人力资源（108）',
+            children:[{
+              id: 9,
+              label: '运营管理'
+            }]
+          },{
+            id: 10,
+            label: '营销（145）',
+            children:[{
+              id: 11,
+              label: '轿车'
+            }]
+          },{
+            id: 12,
+            label: '财经（109）',
+          }]
+        }],
+        methods: {
+          onSubmit() {
+            console.log('submit!');
+          },
+          handleClick(tab, event) {
+            console.log(tab, event);
+          },
+          itemClick(id) {
+              console.log('点击了节点，节点ID[' + id + ']')
+              this.$message('点击了节点，节点ID[' + id + ']');
+          },
+          handleNodeClick(id){
+            console.log('点击了节点，节点ID[' + id + ']')
+            this.$message('点击了节点，节点ID[' + id + ']');
+          }
+        },
+        formInline: {
+          user: '',
+          region: ''
+        },
+        defaultProps: {
+          children: 'children',
+          label: 'label'
+        }
+      };
+    }
+  };
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: hsl(0, 0%, 99%);
+  margin-top: 60px;
+}
+</style>
