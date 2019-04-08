@@ -7,11 +7,12 @@
 </template>
 
 <script>
-  export default {}
+export default {}
 </script>
 
 <style scoped>
-  p{
-    display: block;
-    background: #d6e9c6;
-  }
+p{
+  display: block;
+  background: #d6e9c6;
+}
+</style>

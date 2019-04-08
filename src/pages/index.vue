@@ -5,12 +5,12 @@
 </template>
 
 <script>
-  export default {}
+export default {}
 </script>
 
 <style scoped>
-  p{
-    display: block;
-    background: #ffe87c;
-  }
+p{
+  display: block;
+  background: #ffe87c;
+}
 </style>
