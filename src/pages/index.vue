@@ -9,8 +9,4 @@ export default {}
 </script>
 
 <style scoped>
-p{
-  display: block;
-  background: #ffe87c;
-}
 </style>

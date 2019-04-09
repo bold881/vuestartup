@@ -1,15 +1,41 @@
 <template>
   <div class="hello">
-    <h1>hello world!</h1>
+    <el-row>
+      <el-col :span="6">
+        <div class="input-suffix">
+          分析领域：<el-input class="common-input" v-model="anaDomain" :disabled="true"></el-input>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="input-suffix">
+          分析主题：<el-input class="common-input" v-model="anaTheme"></el-input>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
+import {getTestData} from '../api/api'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      anaDomain: '',
+      anaTheme: ''
+    }
+  },
+  mounted () {
+    this.getInitData()
+  },
+  methods: {
+    getInitData () {
+      getTestData().then((data) => {
+        console.log(data)
+        this.anaDomain = data.province
+        this.anaTheme = data.email
+      })
     }
   }
 }
@@ -17,18 +43,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.input-suffix {
+  display: block;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.common-input {
+  width: 200px;
 }
 </style>
