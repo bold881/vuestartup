@@ -12,6 +12,19 @@
         </div>
       </el-col>
     </el-row>
+    <el-row>
+      <el-col :span="6">
+        <div class="input-suffix">
+          指标编码：<el-input class="common-input" v-model="indexId" :disabled="true"></el-input>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="input-suffix">
+          指标名称：<el-input class="common-input" v-model="indexName"></el-input>
+        </div>
+      </el-col>
+    </el-row>
+
   </div>
 </template>
 
@@ -23,7 +36,9 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       anaDomain: '',
-      anaTheme: ''
+      anaTheme: '',
+      indexId: '',
+      indexName: ''
     }
   },
   mounted () {
@@ -35,6 +50,7 @@ export default {
         console.log(data)
         this.anaDomain = data.province
         this.anaTheme = data.email
+        this.indexId = data.username
       })
     }
   }
@@ -48,5 +64,11 @@ export default {
 }
 .common-input {
   width: 200px;
+}
+.el-row {
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 </style>
